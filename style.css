@@ -1,0 +1,50 @@
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #f8f9fa;
+}
+.rtl-grid {
+    direction: rtl;
+}
+.tab-btn.active {
+    border-color: #3b82f6;
+    background-color: #3b82f6;
+    color: white;
+}
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 1.25rem;
+    right: -0.45rem;
+    width: 0.875rem;
+    height: 0.875rem;
+    background-color: #fff;
+    border: 2px solid #3b82f6;
+    border-radius: 9999px;
+    z-index: 10;
+}
+.timeline-line {
+    position: absolute;
+    top: 1.25rem;
+    right: -1px;
+    bottom: 0;
+    width: 2px;
+    background-color: #d1d5db;
+}
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 24rem;
+    max-height: 400px;
+}
+.toast {
+    transition: opacity 0.5s, transform 0.5s;
+}
