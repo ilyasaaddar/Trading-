@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض تفاعلي - تطبيق المتداول الذكي</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Chosen Palette: Calm Harmony Neutrals -->
+    <!-- Application Structure Plan: تم تصميم التطبيق كصفحة ويب تفاعلية واحدة (SPA) تعمل كعرض تقديمي لمفهوم "المتداول الذكي". يبدأ بمقدمة جذابة، ثم يعرض الميزات الرئيسية عبر نظام تبويبات تفاعلي لتسهيل الاستيعاب. بعد ذلك، يتم عرض المسار التعليمي بشكل بصري عبر خط زمني، مما يجعل رحلة التعلم واضحة. الجزء الأهم هو محاكي التداول التفاعلي الذي يستخدم Chart.js لتقديم تجربة حية، مما يسمح للمستخدم بتجربة الفكرة الأساسية للتطبيق. هذا الهيكل يحول التقرير الثابت إلى تجربة ديناميكية وجذابة، مما يسهل على المستخدمين فهم قيمة التطبيق المقترح. -->
+    <!-- Visualization & Content Choices: تم تحويل تقرير "المتداول الذكي" إلى عرض تفاعلي. المسار التعليمي يُعرض كخط زمني بصري (HTML/CSS) لتوضيح التقدم. ميزات التطبيق منظمة في تبويبات (JS) للاستكشاف المنظم. محاكي التداول هو النقطة المحورية، حيث يستخدم رسمًا بيانيًا من Chart.js (Canvas) مع أزرار تفاعلية (JS) لتقديم تجربة عملية. تقدم المستخدم ممثل برسم بياني دائري (Chart.js)، والمكافآت بأيقونات (Unicode). القاموس مصمم كقائمة تفاعلية (accordion). تم تجنب استخدام SVG وMermaid بالكامل. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <span class="text-2xl font-bold text-blue-600">📈</span>
+                <h1 class="text-xl font-bold">المتداول الذكي</h1>
+            </div>
+            <div class="hidden md:flex space-x-6 space-x-reverse">
+                <a href="#features" class="hover:text-blue-600">الميزات</a>
+                <a href="#learning-path" class="hover:text-blue-600">المسار التعليمي</a>
+                <a href="#simulator" class="hover:text-blue-600">المحاكي</a>
+                <a href="#glossary" class="hover:text-blue-600">القاموس</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section class="text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">أطلق العنان لقدراتك في عالم التداول</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">"المتداول الذكي" هو دليلك التفاعلي لتعلم التداول من الصفر إلى الاحتراف. مصمم بأسلوب مبسط وتدريجي ليجعل رحلتك التعليمية ممتعة وفعالة.</p>
+            <a href="#features" class="mt-8 inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors">اكتشف الميزات</a>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="mb-20">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold">كل ما تحتاجه في مكان واحد</h3>
+                <p class="text-gray-600">نقدم لك مجموعة متكاملة من الأدوات والميزات لدعم رحلتك التعليمية في كل خطوة.</p>
+            </div>
+
+            <div>
+                <div class="mb-6 flex flex-wrap justify-center gap-2 border-b border-gray-200 pb-4">
+                    <button class="tab-btn active text-sm md:text-base font-semibold py-2 px-4 rounded-full transition-colors" data-tab="tab1">🎓 مسار تعليمي</button>
+                    <button class="tab-btn text-sm md:text-base font-semibold py-2 px-4 rounded-full transition-colors" data-tab="tab2">📝 دروس قصيرة</button>
+                    <button class="tab-btn text-sm md:text-base font-semibold py-2 px-4 rounded-full transition-colors" data-tab="tab3">📈 محاكاة حية</button>
+                    <button class="tab-btn text-sm md:text-base font-semibold py-2 px-4 rounded-full transition-colors" data-tab="tab4">🏆 نظام مكافآت</button>
+                    <button class="tab-btn text-sm md:text-base font-semibold py-2 px-4 rounded-full transition-colors" data-tab="tab5">📚 قاموس</button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div id="tab1" class="tab-content active">
+                        <h4 class="text-2xl font-bold mb-4">مسار تعليمي متدرج</h4>
+                        <p>ابدأ من مستوى المبتدئين وتدرج بسلاسة عبر المستويات المتوسطة والمتقدمة وصولًا إلى الاحتراف. كل مستوى مصمم بعناية للبناء على ما تعلمته سابقًا.</p>
+                    </div>
+                    <div id="tab2" class="tab-content">
+                        <h4 class="text-2xl font-bold mb-4">دروس قصيرة ومركزة (Micro-lessons)</h4>
+                        <p>نؤمن بقوة التعلم التدريجي. كل مفهوم معقد يتم تقسيمه إلى دروس صغيرة سهلة الفهم، معززة بأمثلة واختبارات قصيرة لترسيخ المعلومة.</p>
+                    </div>
+                    <div id="tab3" class="tab-content">
+                        <h4 class="text-2xl font-bold mb-4">محاكاة تداول واقعية</h4>
+                        <p>طبق ما تعلمته في بيئة آمنة! استخدم حسابنا التجريبي لتنفيذ أوامر وهمية والتفاعل مع أسعار السوق الحقيقية دون أي مخاطرة مالية.</p>
+                    </div>
+                    <div id="tab4" class="tab-content">
+                        <h4 class="text-2xl font-bold mb-4">نظام مكافآت وتحفيز</h4>
+                        <p>حافظ على حماسك! اكسب النقاط والشارات مع كل درس تكمله وكل تحدٍ تتغلب عليه. تنافس مع أصدقائك وتصدر قائمة المتفوقين.</p>
+                    </div>
+                    <div id="tab5" class="tab-content">
+                        <h4 class="text-2xl font-bold mb-4">قاموس مصطلحات التداول</h4>
+                        <p>لا تدع المصطلحات المعقدة تعيقك. يوفر لك القاموس شروحات مبسطة لجميع مصطلحات التداول الأساسية مثل الرافعة المالية ووقف الخسارة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path Section -->
+        <section id="learning-path" class="mb-20">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold">رحلتك نحو الاحتراف</h3>
+                <p class="text-gray-600">خارطة طريق واضحة تأخذك خطوة بخطوة من الأساسيات إلى أعماق عالم التداول.</p>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <div class="relative pr-8">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-item mb-10 relative">
+                        <h4 class="text-xl font-bold mb-1">المستوى المبتدئ</h4>
+                        <p class="text-gray-600">أساسيات التداول، أنواع الأسواق، المفاهيم الأولية، وكيفية فتح حساب تداول.</p>
+                    </div>
+                    <div class="timeline-item mb-10 relative">
+                        <h4 class="text-xl font-bold mb-1">المستوى المتوسط</h4>
+                        <p class="text-gray-600">التحليل الفني الأساسي، الشموع اليابانية، المؤشرات الشائعة، وإدارة المخاطر.</p>
+                    </div>
+                    <div class="timeline-item mb-10 relative">
+                        <h4 class="text-xl font-bold mb-1">المستوى المتقدم</h4>
+                        <p class="text-gray-600">التحليل الفني العميق، الأنماط السعرية، التحليل الأساسي، واستراتيجيات التداول.</p>
+                    </div>
+                    <div class="timeline-item relative">
+                        <h4 class="text-xl font-bold mb-1">المستوى الاحترافي</h4>
+                        <p class="text-gray-600">علم نفس التداول، إدارة المحافظ، التداول الخوارزمي، ومراجعة الاستراتيجيات.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Simulator Section -->
+        <section id="simulator" class="mb-20">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold">جرّب المحاكي التفاعلي</h3>
+                <p class="text-gray-600">شاهد تحركات السوق الوهمية، وقم بتنفيذ أوامر شراء وبيع افتراضية لترى كيف ستتغير محفظتك.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 rtl-grid">
+                <div class="lg:col-span-2 bg-white p-4 md:p-6 rounded-lg shadow-lg">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="font-bold text-lg">سوق EUR/USD (وهمي)</h4>
+                        <span id="current-price" class="px-3 py-1 text-sm font-bold rounded-md bg-gray-200">1.07500</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="tradingChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-bold mb-4">لوحة التحكم</h4>
+                    <div class="mb-4">
+                        <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">الكمية (Lot)</label>
+                        <input type="number" id="amount" value="0.01" class="w-full p-2 border border-gray-300 rounded-md">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <button id="buy-btn" class="w-full bg-green-500 text-white font-bold py-3 rounded-md hover:bg-green-600 transition-colors">شراء</button>
+                        <button id="sell-btn" class="w-full bg-red-500 text-white font-bold py-3 rounded-md hover:bg-red-600 transition-colors">بيع</button>
+                    </div>
+                    <hr class="my-4">
+                    <div>
+                        <h5 class="font-bold mb-2">محفظتي الوهمية</h5>
+                        <p>الرصيد: <span id="balance">10,000.00</span> $</p>
+                        <p>الأرباح/الخسائر: <span id="pnl" class="font-bold text-gray-500">0.00</span> $</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gamification & Glossary Section -->
+        <section id="glossary" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-6 text-center">تقدمك وإنجازاتك</h3>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="w-40 h-40">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold">مستوى المبتدئين</h4>
+                        <p class="text-gray-600 mb-4">أنت على الطريق الصحيح!</p>
+                        <div class="flex space-x-4 space-x-reverse">
+                            <span class="text-3xl" title="أكملت 10 دروس">🏅</span>
+                            <span class="text-3xl" title="أول صفقة ناجحة في المحاكي">🏆</span>
+                            <span class="text-3xl" title="مشارك نشط">✨</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-6 text-center">قاموس التداول</h3>
+                <div id="glossary-container" class="space-y-2">
+                    <div class="glossary-item">
+                        <button class="w-full text-right font-bold p-3 bg-gray-100 rounded-md flex justify-between items-center">
+                            <span>الرافعة المالية (Leverage)</span>
+                            <span>+</span>
+                        </button>
+                        <div class="p-3 bg-gray-50 hidden">
+                            <p>أداة تمكنك من التداول بمبلغ أكبر من رأسمالك الفعلي. تزيد من الأرباح المحتملة، ولكنها تزيد من المخاطر أيضًا.</p>
+                        </div>
+                    </div>
+                    <div class="glossary-item">
+                        <button class="w-full text-right font-bold p-3 bg-gray-100 rounded-md flex justify-between items-center">
+                            <span>وقف الخسارة (Stop Loss)</span>
+                            <span>+</span>
+                        </button>
+                        <div class="p-3 bg-gray-50 hidden">
+                            <p>أمر تضعه لدى وسيطك لإغلاق الصفقة تلقائيًا عند سعر معين، وذلك للحد من خسائرك المحتملة.</p>
+                        </div>
+                    </div>
+                     <div class="glossary-item">
+                        <button class="w-full text-right font-bold p-3 bg-gray-100 rounded-md flex justify-between items-center">
+                            <span>أمر السوق (Market Order)</span>
+                            <span>+</span>
+                        </button>
+                        <div class="p-3 bg-gray-50 hidden">
+                            <p>أمر لشراء أو بيع أصل مالي بأفضل سعر متاح حاليًا في السوق. يتم تنفيذه بشكل فوري.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="toast fixed bottom-5 right-5 bg-gray-800 text-white py-3 px-6 rounded-lg shadow-xl opacity-0 transform translate-y-10">
+        <p id="toast-message"></p>
+    </div>
+
+    <footer class="bg-gray-800 text-white text-center p-6">
+        <p>&copy; 2025 المتداول الذكي. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
